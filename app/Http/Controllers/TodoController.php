@@ -44,7 +44,11 @@ class TodoController extends Controller
 
     public function update(Request $request, Todo $todo)
     {
-        //
+       $res=Todo::find($request->id);
+        $res->name=$request->input('name');
+        $res->save();
+        $request->session()->flash('msg','data updated');
+        return redirect ('todo_show');
     }
 
  
