@@ -28,7 +28,7 @@ class TodoController extends Controller
 
     public function show(Todo $todo)
     {
-        //
+        return view('todo_show')->with('todoArr' , Todo::all());
     }
 
  
@@ -44,8 +44,9 @@ class TodoController extends Controller
     }
 
  
-    public function destroy(Todo $todo)
+    public function destroy(Todo $todo,$id)
     {
-        //
+        Todo::destroy(array('id', $id));
+        return redirect ('todo_show');
     }
 }
